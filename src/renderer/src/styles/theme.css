@@ -1,0 +1,178 @@
+:root {
+  --bg-main: #15171B;
+  --bg-panel: #1D2026;
+  --bg-surface: #252A32;
+  --bg-surface-hover: #2E343E;
+  --bg-surface-active: #38404C;
+
+  --border-color: #343A44;
+  --border-subtle: #272C35;
+  --border-focus: #FF9859;
+
+  --text-primary: #F4F6F8;
+  --text-secondary: #9AA4B2;
+  --text-muted: #6B7280;
+  --text-inverse: #111317;
+
+  --nigi-orange: #FF9859;
+  --nigi-orange-hover: #FFAF7D;
+  --nigi-orange-active: #E68243;
+  --nigi-orange-glow: rgba(255, 152, 89, 0.25);
+
+  --teal-active: #42D6C5;
+  --teal-hover: #67E4D6;
+  --teal-glow: rgba(66, 214, 197, 0.25);
+
+  --danger: #F06464;
+  --danger-hover: #F87D7D;
+  --success: #5BD69B;
+  --warning: #F5A623;
+
+  --font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  --font-mono: 'JetBrains Mono', 'Fira Code', 'Consolas', monospace;
+
+  --radius-sm: 4px;
+  --radius-md: 6px;
+  --radius-lg: 8px;
+  --radius-full: 9999px;
+
+  --header-height: 48px;
+  --timeline-toolbar-height: 40px;
+  --left-panel-width: 320px;
+  --right-panel-width: 340px;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html, body, #root {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background-color: var(--bg-main);
+  color: var(--text-primary);
+  font-family: var(--font-family);
+  font-size: 13px;
+  user-select: none;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Custom modern dark scrollbars */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: #343A44;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #4A5260;
+}
+
+button {
+  font-family: inherit;
+  font-size: inherit;
+  border: none;
+  background: none;
+  color: inherit;
+  cursor: pointer;
+  outline: none;
+}
+button:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+input, select, textarea {
+  font-family: inherit;
+  font-size: 12px;
+  background-color: var(--bg-surface);
+  border: 1px solid var(--border-color);
+  color: var(--text-primary);
+  border-radius: var(--radius-sm);
+  padding: 6px 10px;
+  outline: none;
+  transition: border-color 0.15s ease;
+}
+input:focus, select:focus, textarea:focus {
+  border-color: var(--nigi-orange);
+}
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  opacity: 1;
+}
+
+/* Common button variants */
+.btn-primary {
+  background-color: var(--nigi-orange);
+  color: var(--text-inverse);
+  font-weight: 600;
+  padding: 6px 14px;
+  border-radius: var(--radius-sm);
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  transition: background-color 0.15s, transform 0.05s;
+}
+.btn-primary:hover:not(:disabled) {
+  background-color: var(--nigi-orange-hover);
+}
+.btn-primary:active:not(:disabled) {
+  background-color: var(--nigi-orange-active);
+  transform: translateY(1px);
+}
+
+.btn-secondary {
+  background-color: var(--bg-surface);
+  color: var(--text-primary);
+  border: 1px solid var(--border-color);
+  padding: 6px 12px;
+  border-radius: var(--radius-sm);
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  transition: background-color 0.15s, border-color 0.15s;
+}
+.btn-secondary:hover:not(:disabled) {
+  background-color: var(--bg-surface-hover);
+  border-color: #4A5260;
+}
+
+.btn-danger {
+  background-color: var(--danger);
+  color: #fff;
+  padding: 6px 12px;
+  border-radius: var(--radius-sm);
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+.btn-danger:hover:not(:disabled) {
+  background-color: var(--danger-hover);
+}
+
+.icon-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  border-radius: var(--radius-sm);
+  color: var(--text-secondary);
+  transition: color 0.15s, background-color 0.15s;
+}
+.icon-btn:hover:not(:disabled) {
+  color: var(--text-primary);
+  background-color: var(--bg-surface-hover);
+}
+.icon-btn.active {
+  color: var(--teal-active);
+  background-color: rgba(66, 214, 197, 0.12);
+}

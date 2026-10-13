@@ -1,0 +1,194 @@
+.app-container {
+  display: flex;
+  flex-direction: column;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  background-color: var(--bg-main);
+}
+
+/* Header */
+.app-header {
+  height: var(--header-height);
+  background-color: var(--bg-panel);
+  border-bottom: 1px solid var(--border-color);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 12px;
+  -webkit-app-region: drag;
+}
+
+.header-left, .header-center, .header-right {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  -webkit-app-region: no-drag;
+}
+
+.app-brand {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 700;
+  font-size: 14px;
+  letter-spacing: -0.2px;
+  color: var(--text-primary);
+}
+
+.brand-logo {
+  width: 24px;
+  height: 24px;
+  object-fit: contain;
+  display: block;
+  flex-shrink: 0;
+}
+
+.project-title-input {
+  background: transparent;
+  border: 1px solid transparent;
+  color: var(--text-primary);
+  font-size: 13px;
+  font-weight: 500;
+  padding: 3px 6px;
+  border-radius: var(--radius-sm);
+  width: 180px;
+}
+.project-title-input:hover {
+  border-color: var(--border-color);
+  background-color: var(--bg-surface);
+}
+.project-title-input:focus {
+  border-color: var(--nigi-orange);
+  background-color: var(--bg-surface);
+}
+
+.save-status-badge {
+  font-size: 11px;
+  color: var(--text-muted);
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+.save-status-badge.unsaved {
+  color: var(--nigi-orange);
+}
+
+/* Main workspace area (Split between Left Media, Center Preview, Right Inspector) */
+.workspace-middle {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.left-panel {
+  width: var(--left-panel-width);
+  min-width: 260px;
+  max-width: 420px;
+  background-color: var(--bg-panel);
+  border-right: 1px solid var(--border-color);
+  display: flex;
+  flex-direction: column;
+}
+
+.center-panel {
+  flex: 1;
+  min-width: 320px;
+  background-color: var(--bg-main);
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+.right-panel {
+  width: var(--right-panel-width);
+  min-width: 280px;
+  max-width: 440px;
+  background-color: var(--bg-panel);
+  border-left: 1px solid var(--border-color);
+  display: flex;
+  flex-direction: column;
+}
+
+/* Timeline section (bottom) */
+.timeline-section {
+  height: 240px;
+  min-height: 180px;
+  max-height: 480px;
+  background-color: var(--bg-panel);
+  display: flex;
+  flex-direction: column;
+}
+
+/* Tabs */
+.panel-tabs {
+  display: flex;
+  border-bottom: 1px solid var(--border-color);
+  background-color: var(--bg-panel);
+}
+.panel-tab {
+  padding: 10px 14px;
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--text-secondary);
+  border-bottom: 2px solid transparent;
+  transition: all 0.15s;
+}
+.panel-tab:hover {
+  color: var(--text-primary);
+}
+.panel-tab.active {
+  color: var(--nigi-orange);
+  border-bottom-color: var(--nigi-orange);
+  background-color: rgba(255, 152, 89, 0.05);
+}
+
+/* Modal backdrop & dialogs */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  backdrop-filter: blur(4px);
+}
+.modal-content {
+  background-color: var(--bg-panel);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-lg);
+  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.6);
+  width: 90%;
+  max-width: 580px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+.modal-header {
+  padding: 14px 18px;
+  border-bottom: 1px solid var(--border-color);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 14px;
+  font-weight: 600;
+}
+.modal-body {
+  padding: 18px;
+  overflow-y: auto;
+  max-height: 75vh;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+.modal-footer {
+  padding: 12px 18px;
+  border-top: 1px solid var(--border-color);
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 10px;
+  background-color: var(--bg-surface);
+}

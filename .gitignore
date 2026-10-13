@@ -1,0 +1,14 @@
+node_modules/
+dist/
+release/
+out/
+test-results/
+playwright-report/
+coverage/
+tests/temp*/
+tests/fixtures/generated/
+*.log
+.DS_Store
+Thumbs.db
+.env
+.env.local

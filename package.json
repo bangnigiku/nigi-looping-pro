@@ -1,0 +1,100 @@
+{
+  "name": "nigi-loping-pro",
+  "productName": "NIGI Looping Pro",
+  "version": "1.0.1",
+  "description": "Studio pengulangan video dan audio mulus dari Nigi Studio.",
+  "author": "Nigi Studio",
+  "license": "UNLICENSED",
+  "private": true,
+  "type": "module",
+  "main": "dist/main/main.cjs",
+  "scripts": {
+    "prepare:icon": "node scripts/prepare-app-icon.mjs",
+    "dev": "node scripts/dev.mjs",
+    "build:main": "node scripts/build-main.mjs",
+    "build:renderer": "vite build",
+    "build": "npm run prepare:icon && npm run typecheck && npm run build:main && npm run build:renderer",
+    "start": "electron .",
+    "typecheck": "tsc -p tsconfig.node.json --noEmit && tsc -p tsconfig.web.json --noEmit",
+    "lint": "eslint .",
+    "test": "vitest run",
+    "test:unit": "vitest run tests/unit",
+    "test:integration": "vitest run tests/integration",
+    "test:e2e": "playwright test",
+    "fixtures": "node scripts/make-fixtures.mjs",
+    "dist": "npm run build && electron-builder --win --x64",
+    "dist:dir": "npm run build && electron-builder --win --x64 --dir"
+  },
+  "build": {
+    "appId": "com.nigistudio.nigilopingpro",
+    "productName": "NIGI Looping Pro",
+    "directories": {
+      "output": "release"
+    },
+    "files": [
+      "dist/**/*",
+      "assets/branding/**/*",
+      "package.json"
+    ],
+    "extraResources": [
+      {
+        "from": "node_modules/ffmpeg-static/ffmpeg.exe",
+        "to": "bin/ffmpeg.exe"
+      },
+      {
+        "from": "node_modules/ffprobe-static/bin/win32/x64/ffprobe.exe",
+        "to": "bin/ffprobe.exe"
+      },
+      {
+        "from": "assets/branding",
+        "to": "assets/branding"
+      }
+    ],
+    "win": {
+      "icon": "assets/branding/logo-app.ico",
+      "executableName": "NIGI Looping Pro",
+      "target": [
+        {
+          "target": "nsis",
+          "arch": [
+            "x64"
+          ]
+        }
+      ]
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true,
+      "shortcutName": "NIGI Looping Pro",
+      "artifactName": "${productName} Setup ${version}.${ext}",
+      "installerIcon": "assets/branding/logo-app.ico",
+      "uninstallerIcon": "assets/branding/logo-app.ico"
+    }
+  },
+  "devDependencies": {
+    "@eslint/js": "^10.0.1",
+    "@fontsource-variable/inter": "^5.3.0",
+    "@playwright/test": "^1.64.0",
+    "@testing-library/react": "^16.3.3",
+    "@types/node": "^24.19.2",
+    "@types/react": "^19.3.0",
+    "@types/react-dom": "^19.3.0",
+    "@vitejs/plugin-react": "^6.1.2",
+    "electron": "^44.7.0",
+    "electron-builder": "^26.15.3",
+    "esbuild": "^0.28.2",
+    "eslint": "^10.12.0",
+    "eslint-plugin-react-hooks": "^7.1.1",
+    "ffmpeg-static": "^5.3.0",
+    "ffprobe-static": "^3.1.0",
+    "globals": "^17.13.0",
+    "jsdom": "^30.1.2",
+    "lucide-react": "^1.55.0",
+    "react": "^19.3.0",
+    "react-dom": "^19.3.0",
+    "typescript": "~5.9.3",
+    "typescript-eslint": "^8.71.2",
+    "vite": "^8.3.4",
+    "vitest": "^5.0.4"
+  }
+}
